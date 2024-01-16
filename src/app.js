@@ -20,6 +20,18 @@ app.use(express.urlencoded({
 
 app.use(express.static("public"))
 
-app.use(cookieParser)
+app.use(cookieParser())
+
+// Routes
+import userRouter from './routes/user.routes.js';
+
+// Route declaration
+app.use("/api/v1/users", userRouter)
+
+// To check above code is hitting or not
+// app.use("/api/v1/users", (req, res, next) => {
+//     console.log('Request to /api/v1/users route is being processed.');
+//     userRouter(req, res, next);
+// });
 
 export { app }
